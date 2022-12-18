@@ -2,12 +2,11 @@ package menu
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import menu.view.InputValidator
+import menu.view.InputValidator.Companion.DUPLICATED_ERROR
+import menu.view.InputValidator.Companion.MENU_COUNT_ERROR
+import menu.view.InputValidator.Companion.NAME_COUNT_ERROR
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
-
-private const val DUPLICATED_ERROR = "중복된 값이 있습니다."
-private const val NAME_ERROR = "코치들은 2~5명이어야합니다."
-private const val MENU_COUNT_ERROR = "못 먹는 메뉴는 0~2개여야합니다."
 
 class InputValidatorTest {
     private val inputValidator = InputValidator()
@@ -30,7 +29,7 @@ class InputValidatorTest {
             assertThatThrownBy {
                 inputValidator.validateNames(names)
             }.isExactlyInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageContaining(NAME_ERROR)
+                .hasMessageContaining(NAME_COUNT_ERROR)
         }
     }
 

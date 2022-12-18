@@ -1,8 +1,5 @@
 package menu.view
 
-private const val NAME_COUNT_ERROR = "코치들은 2~5명이어야합니다."
-private const val MENU_COUNT_ERROR = "못 먹는 메뉴는 0~2개여야합니다."
-private const val DUPLICATED_ERROR = "중복된 값이 있습니다."
 private const val NAME_COUNT_START = 2
 private const val NAME_COUNT_END = 5
 private const val MENU_COUNT_START = 0
@@ -36,5 +33,11 @@ class InputValidator {
         if (menus.size !in MENU_COUNT_START..MENU_COUNT_END) {
             throw IllegalArgumentException(MENU_COUNT_ERROR)
         }
+    }
+
+    companion object {
+        const val NAME_COUNT_ERROR = "코치들은 2~5명이어야합니다."
+        const val MENU_COUNT_ERROR = "못 먹는 메뉴는 0~2개여야합니다."
+        const val DUPLICATED_ERROR = "중복된 값이 있습니다."
     }
 }
