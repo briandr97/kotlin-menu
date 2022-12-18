@@ -1,7 +1,5 @@
 package menu.common
 
-import camp.nextstep.edu.missionutils.Randoms
-
 enum class Category(val order: Int, val category: String, val menus: List<String>) {
     JAPANESE(1, "일식", listOf("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")),
     KOREAN(2, "한식", listOf("김밥", "김치찌개", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이", "제육볶음")),
@@ -18,13 +16,6 @@ enum class Category(val order: Int, val category: String, val menus: List<String
                 }
             }
             return false
-        }
-
-        fun getRandomCategory(): Category {
-            val randomNumber = Randoms.pickNumberInRange(1, 5)
-            return values()
-                .find { it.order == randomNumber }
-                ?: throw IllegalArgumentException(CATEGORY_ERROR)
         }
     }
 }

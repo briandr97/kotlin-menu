@@ -6,18 +6,18 @@ private const val CATEGORIES_SIZE = 5
 
 class CategoryCreator {
 
-    fun createCategories(): List<Category> {
+    fun createCategories(numberGenerator: NumberGenerator): List<Category> {
         val categories = mutableListOf<Category>()
         repeat(CATEGORIES_SIZE) {
-            categories.add(createCategory(categories))
+            categories.add(createCategory(categories, numberGenerator))
         }
         return categories
     }
 
-    private fun createCategory(categories: List<Category>): Category {
-        val category: Category = Category.getRandomCategory()
+    private fun createCategory(categories: List<Category>, numberGenerator: NumberGenerator): Category {
+        val category: Category = numberGenerator.generate()
         if (isNumberOfCategoryMax(category, categories)) {
-            return createCategory(categories)
+            return createCategory(categories, numberGenerator)
         }
         return category
     }

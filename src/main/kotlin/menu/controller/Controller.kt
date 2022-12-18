@@ -3,6 +3,7 @@ package menu.controller
 import menu.common.Category
 import menu.domain.CategoryCreator
 import menu.domain.Coach
+import menu.domain.RandomNumberGenerator
 import menu.view.InputView
 import menu.view.OutputView
 
@@ -49,7 +50,7 @@ class Controller(
     }
 
     fun suggestMenus() {
-        val categories = CategoryCreator().createCategories()
+        val categories = CategoryCreator().createCategories(RandomNumberGenerator())
         categories.forEach {
             suggestMenu(it)
         }
